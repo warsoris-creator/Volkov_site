@@ -1,0 +1,9 @@
+node_modules/
+data/site-data.json
+uploads/*
+!uploads/.gitkeep
+*.log
+.env
+.claude/
+volkov.9.html
+build.py
