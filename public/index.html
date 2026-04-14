@@ -856,7 +856,7 @@ function saveAll(){
     projects:projects,
     photoAlbums:photoAlbums,
     paintingItems:paintingItems,
-    aboutPhoto:img?img.src:null,
+    aboutPhoto:img?img.getAttribute("src"):null,
     aboutBio:bio?bio.textContent:'',
     paintingName:g('painting-name'),
     paintingDesc:g('painting-desc'),
