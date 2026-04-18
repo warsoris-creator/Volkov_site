@@ -1,0 +1,62 @@
+{
+  "hasData": true,
+  "projects": [],
+  "photoAlbums": [
+    {
+      "id": "people",
+      "title": "ЛЮДИ",
+      "cover": null,
+      "items": [
+        {
+          "id": 1776189924231,
+          "src": "/uploads/1776189924228-131515881.jpg",
+          "caption": "Дядя Гриша\n\n"
+        }
+      ],
+      "desc": ""
+    },
+    {
+      "id": "spaces",
+      "title": "ПРОСТРАНСТВА",
+      "cover": null,
+      "items": [],
+      "desc": ""
+    },
+    {
+      "id": "album1776189950311",
+      "title": "LKBYYSQ XKTY",
+      "cover": null,
+      "items": [
+        {
+          "id": 1776189960524,
+          "src": "/uploads/1776189960520-533302729.png",
+          "caption": ""
+        }
+      ],
+      "desc": ""
+    }
+  ],
+  "paintingItems": [],
+  "aboutPhoto": null,
+  "aboutBio": "Экономист\nФотограф\nХудожник\nСапсап инструктор\nАдмин фотостудии\nИнженер-слесарь по компьютерам\nИсторик гражданской войны в России\nСпециалист по походам\nКапитан команды КВН\nБиблиотекарь\nФашист",
+  "paintingName": "",
+  "paintingDesc": "",
+  "photoPeopleName": "",
+  "photoPeopleDesc": "",
+  "photoSpacesName": "",
+  "photoSpacesDesc": "",
+  "contacts": {
+    "telegram": {
+      "nick": "@tiled_stove",
+      "url": "https://t.me/tiled_stove"
+    },
+    "instagram": {
+      "nick": "@pepperback67",
+      "url": "https://www.instagram.com/pepperback67?igsh=MXd2Y2d5OHhxZ3drdw=="
+    },
+    "vk": {
+      "nick": "apollo_rouge",
+      "url": "https://vk.ru/apollo_rouge"
+    }
+  }
+}
