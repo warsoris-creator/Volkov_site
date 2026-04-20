@@ -131,9 +131,19 @@ body.edit-mode .subsection-del-btn{display:inline;}
 .about-photo img{width:100%;height:100%;object-fit:cover;}
 .about-photo .ph{font-family:var(--nav-font);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);}
 .about-text h2{font-family:var(--nav-font);font-weight:normal;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#ffffff;margin-bottom:24px;}
-.about-bio{font-size:16px;line-height:2;color:var(--text);font-weight:normal;margin-bottom:20px;outline:none;white-space:pre-wrap;pointer-events:none;}
+.about-bio{font-size:16px;line-height:2;color:var(--text);font-weight:normal;margin-bottom:20px;outline:none;pointer-events:none;}
+.about-bio b,.about-bio strong{font-weight:700;color:#ffffff;}
+.about-bio i,.about-bio em{font-style:italic;}
+.about-bio u{text-decoration:underline;}
+.about-bio ul,.about-bio ol{margin:8px 0;padding-left:24px;}
+.about-bio li{line-height:2;}
+.about-bio hr{border:none;border-top:1px solid rgba(255,255,255,0.1);margin:16px 0;}
 body.edit-mode .about-bio{pointer-events:auto;cursor:text;}
 body.edit-mode .about-bio:focus{border-left:2px dashed rgba(255,255,255,0.2);padding-left:16px;}
+.about-toolbar{display:none;margin-bottom:12px;gap:6px;flex-wrap:wrap;}
+body.edit-mode .about-toolbar{display:flex;}
+.about-toolbar button{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:var(--text);font-size:13px;padding:4px 10px;cursor:pointer;border-radius:3px;font-family:var(--body-font);transition:background 0.2s;}
+.about-toolbar button:hover{background:rgba(255,255,255,0.15);}
 .contacts-layout{max-width:600px;}
 .contact-item{display:flex;flex-direction:column;gap:6px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
 .contact-label{font-family:var(--nav-font);font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-dim);}
@@ -360,17 +370,14 @@ input[type=file]{display:none;}
     </div>
     <div class="about-text">
       <h2>&#1040;&#1083;&#1077;&#1082;&#1089;&#1072;&#1085;&#1076;&#1088; &#1042;&#1086;&#1083;&#1082;&#1086;&#1074;</h2>
-      <div class="about-bio" contenteditable="false" spellcheck="false">&#1069;&#1082;&#1086;&#1085;&#1086;&#1084;&#1080;&#1089;&#1090;
-&#1060;&#1086;&#1090;&#1086;&#1075;&#1088;&#1072;&#1092;
-&#1061;&#1091;&#1076;&#1086;&#1078;&#1085;&#1080;&#1082;
-&#1057;&#1072;&#1087;&#1089;&#1072;&#1087; &#1080;&#1085;&#1089;&#1090;&#1088;&#1091;&#1082;&#1090;&#1086;&#1088;
-&#1040;&#1076;&#1084;&#1080;&#1085; &#1092;&#1086;&#1090;&#1086;&#1089;&#1090;&#1091;&#1076;&#1080;&#1080;
-&#1048;&#1085;&#1078;&#1077;&#1085;&#1077;&#1088;-&#1089;&#1083;&#1077;&#1089;&#1072;&#1088;&#1100; &#1087;&#1086; &#1082;&#1086;&#1084;&#1087;&#1100;&#1102;&#1090;&#1077;&#1088;&#1072;&#1084;
-&#1048;&#1089;&#1090;&#1086;&#1088;&#1080;&#1082; &#1075;&#1088;&#1072;&#1078;&#1076;&#1072;&#1085;&#1089;&#1082;&#1086;&#1081; &#1074;&#1086;&#1081;&#1085;&#1099; &#1074; &#1056;&#1086;&#1089;&#1089;&#1080;&#1080;
-&#1057;&#1087;&#1077;&#1094;&#1080;&#1072;&#1083;&#1080;&#1089;&#1090; &#1087;&#1086; &#1087;&#1086;&#1093;&#1086;&#1076;&#1072;&#1084;
-&#1050;&#1072;&#1087;&#1080;&#1090;&#1072;&#1085; &#1082;&#1086;&#1084;&#1072;&#1085;&#1076;&#1099; &#1050;&#1042;&#1053;
-&#1041;&#1080;&#1073;&#1083;&#1080;&#1086;&#1090;&#1077;&#1082;&#1072;&#1088;&#1100;
-&#1060;&#1072;&#1096;&#1080;&#1089;&#1090;</div>
+      <div class="about-toolbar">
+        <button onclick="document.execCommand('bold')" title="Жирный"><b>Ж</b></button>
+        <button onclick="document.execCommand('italic')" title="Курсив"><i>К</i></button>
+        <button onclick="document.execCommand('underline')" title="Подчёркнутый"><u>П</u></button>
+        <button onclick="document.execCommand('insertUnorderedList')" title="Список">• Список</button>
+        <button onclick="document.execCommand('insertHorizontalRule')" title="Разделитель">― Линия</button>
+      </div>
+      <div class="about-bio" contenteditable="false" spellcheck="false">Экономист<br>Фотограф<br>Художник<br>Сапсап инструктор<br>Админ фотостудии<br>Инженер-слесарь по компьютерам<br>Историк гражданской войны в России<br>Специалист по походам<br>Капитан команды КВН<br>Библиотекарь<br>Фашист</div>
       </div>
     </div>
   </div>
@@ -915,7 +922,7 @@ function saveAll(){
     photoAlbums:photoAlbums,
     paintingItems:paintingItems,
     aboutPhoto:img?img.getAttribute("src"):null,
-    aboutBio:bio?bio.textContent:'',
+    aboutBio:bio?bio.innerHTML:'',
     paintingName:g('painting-name'),
     paintingDesc:g('painting-desc'),
     photoPeopleName:g('photo-people-name'),
@@ -957,7 +964,7 @@ renderPhotoAlbums();
         renderInnerGallery('painting-gallery',paintingItems,'painting');
       }
       if(d.aboutPhoto){document.getElementById('about-photo-box').innerHTML='<img src="'+d.aboutPhoto+'" alt="">';}
-      if(d.aboutBio){var b=document.querySelector('.about-bio');if(b)b.textContent=d.aboutBio;}
+      if(d.aboutBio){var b=document.querySelector('.about-bio');if(b)b.innerHTML=d.aboutBio;}
       var s=function(id,v){var e=document.getElementById(id);if(e&&v)e.textContent=v;};
       s('painting-name',d.paintingName);
       s('painting-desc',d.paintingDesc);
