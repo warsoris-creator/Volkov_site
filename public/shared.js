@@ -4,6 +4,27 @@ function navigateTo(url){
   setTimeout(function(){ window.location.href=url; }, 340);
 }
 
+// Исправление bfcache: при возврате кнопкой «Назад» снимаем page-exit
+// и перезапускаем анимацию входа
+window.addEventListener('pageshow', function(e){
+  document.body.classList.remove('page-exit');
+  // Перезапускаем анимацию page-wrap если страница из bfcache
+  if(e.persisted){
+    var pw = document.querySelector('.page-wrap');
+    if(pw){
+      pw.style.animation = 'none';
+      pw.offsetHeight; // reflow
+      pw.style.animation = '';
+    }
+    var hs = document.getElementById('home-screen');
+    if(hs){
+      hs.style.animation = 'none';
+      hs.offsetHeight;
+      hs.style.animation = '';
+    }
+  }
+});
+
 // ── ИНИЦИАЛИЗАЦИЯ СТРАНИЦЫ ──
 function initPage(sectionId){
   // Восстанавливаем режим редактирования из sessionStorage
