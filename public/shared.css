@@ -265,6 +265,9 @@ input[type=file]{display:none;}
   to   { opacity: 0; transform: translateY(-24px); }
 }
 .page-wrap {
+  opacity: 0;
+}
+.page-wrap.data-loaded {
   animation: pageEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 body.page-exit .page-wrap {

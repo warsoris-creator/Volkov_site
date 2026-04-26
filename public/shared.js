@@ -6,6 +6,14 @@ function navigateTo(url){
 
 // Исправление bfcache: при возврате кнопкой «Назад» снимаем page-exit
 // и перезапускаем анимацию входа
+// ── ПОКАЗ СТРАНИЦЫ ПОСЛЕ ЗАГРУЗКИ ДАННЫХ ──
+function _showPage(){
+  var pw=document.querySelector('.page-wrap');
+  if(pw&&!pw.classList.contains('data-loaded')){
+    pw.classList.add('data-loaded');
+  }
+}
+
 window.addEventListener('pageshow', function(e){
   document.body.classList.remove('page-exit');
   // Перезапускаем анимацию page-wrap если страница из bfcache
@@ -35,6 +43,9 @@ function initPage(sectionId){
     document.querySelectorAll('.editable').forEach(function(el){el.setAttribute('contenteditable','true');});
     if(bioEl)bioEl.setAttribute('contenteditable','true');
   }
+  // Страховочный таймаут: показываем страницу если сервер не ответил
+  setTimeout(_showPage, 1500);
+
   // Подсвечиваем текущий раздел в навигации
   if(sectionId){
     var navLinks=document.querySelectorAll('.section-nav a');
@@ -568,8 +579,9 @@ renderPhotoAlbums();
       s('photo-spaces-name',d.photoSpacesName);
       s('photo-spaces-desc',d.photoSpacesDesc);
       if(d.contacts){applyContactData(d.contacts);}
+      _showPage();
     })
-    .catch(console.error);
+    .catch(function(e){console.error(e); _showPage();});
 })();
 
 
