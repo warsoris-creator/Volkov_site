@@ -33,7 +33,7 @@ const upload = multer({
 });
 
 app.use(express.json({ limit: '10mb' }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }));
 app.use('/uploads', express.static(UPLOAD_DIR));
 
 // ── Загрузка изображения ──────────────────────────────────────────────
