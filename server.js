@@ -33,6 +33,16 @@ const upload = multer({
 });
 
 app.use(express.json({ limit: '10mb' }));
+// Кэш для статических ресурсов (изображения, шрифты, CSS, JS) — 7 дней
+app.use(function(req, res, next){
+  var ext = req.path.split('.').pop().toLowerCase();
+  if(['png','jpg','jpeg','woff','woff2','css','js'].includes(ext)){
+    res.setHeader('Cache-Control','public,max-age=604800,immutable');
+  } else {
+    res.setHeader('Cache-Control','no-cache');
+  }
+  next();
+});
 app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }));
 app.use('/uploads', express.static(UPLOAD_DIR));
 

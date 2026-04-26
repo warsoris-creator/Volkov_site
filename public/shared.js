@@ -1,7 +1,7 @@
 // ── ПЕРЕХОД МЕЖДУ СТРАНИЦАМИ ──
 function navigateTo(url){
   document.body.classList.add('page-exit');
-  setTimeout(function(){ window.location.href=url; }, 340);
+  setTimeout(function(){ window.location.href=url; }, 180);
 }
 
 // Исправление bfcache: при возврате кнопкой «Назад» снимаем page-exit
@@ -44,7 +44,7 @@ function initPage(sectionId){
     if(bioEl)bioEl.setAttribute('contenteditable','true');
   }
   // Страховочный таймаут: показываем страницу если сервер не ответил
-  setTimeout(_showPage, 1500);
+  setTimeout(_showPage, 600);
 
   // Подсвечиваем текущий раздел в навигации
   if(sectionId){
