@@ -537,7 +537,7 @@ renderPhotoAlbums();
         paintingItems=d.paintingItems;
         renderInnerGallery('painting-gallery',paintingItems,'painting');
       }
-      if(d.aboutPhoto){var ab=document.getElementById('about-photo-box');if(ab)ab.innerHTML='<img src=+d.aboutPhoto+ alt=>';}"">';}
+      if(d.aboutPhoto){var ab=document.getElementById('about-photo-box');if(ab)ab.innerHTML='<img src="'+d.aboutPhoto+'" alt="">';}
       if(d.aboutBio){var b=document.querySelector('.about-bio');if(b)b.innerHTML=d.aboutBio;}
       var s=function(id,v){var e=document.getElementById(id);if(e&&v)e.textContent=v;};
       s('painting-name',d.paintingName);
